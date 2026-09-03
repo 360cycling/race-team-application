@@ -154,9 +154,10 @@ body[data-view="u23"] .only-junior{display:none!important}
 /* ---------- application form ---------- */
 #apply{background:linear-gradient(180deg,var(--track),#100a0c 40%,var(--track));border-top:1px solid var(--edge)}
 .applywrap{max-width:860px;margin:0 auto;padding:0 24px}
-.fsec{margin-top:34px;border:1px solid var(--edge);border-radius:6px;background:var(--panel);padding:22px 24px 26px}
-.fsec>h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:19px;letter-spacing:.03em;margin-bottom:4px}
-.fsec>.fnote{color:var(--dim);font-size:13px;margin-bottom:16px}
+.fsec{margin-top:38px}
+.fsec>h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:20px;letter-spacing:.03em;margin-bottom:6px;padding-bottom:8px;border-bottom:1px solid var(--edge)}
+.fsec>.fnote{color:var(--dim);font-size:13px;margin-bottom:14px}
+.fsec>.frm{margin-top:14px}
 .frm{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .fld{display:flex;flex-direction:column;gap:6px}
 .fld.full{grid-column:1/-1}
