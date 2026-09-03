@@ -49,7 +49,7 @@
     club: $("f_club"), cat: $("f_cat"), bcid: $("f_bcid"), discipline: $("f_discipline"), years: $("f_years"),
     results: $("f_results"), programme: $("f_programme"), strengths: $("f_strengths"), ridertype: $("f_ridertype"), power: $("f_power"),
     plans: $("f_plans"), ambitions: $("f_ambitions"), why: $("f_why"), lookingfor: $("f_lookingfor"),
-    linkresults: $("f_linkresults"), strava: $("f_strava"), tp: $("f_tp"), otherlinks: $("f_otherlinks"),
+    strava: $("f_strava"), otherlinks: $("f_otherlinks"),
     gname: $("f_gname"), gcontact: $("f_gcontact")
   };
   var agehint = $("agehint"), teamerr = $("teamerr"), guardian = $("guardian");
@@ -218,9 +218,7 @@
         line("Looking for from a team", f.lookingfor.value)
       ]),
       block("LINKS", [
-        line("Results link", f.linkresults.value),
         line("Strava", f.strava.value),
-        line("TrainingPeaks", f.tp.value),
         line("Other", f.otherlinks.value)
       ]),
       guardian.classList.contains("on") ? block("PARENT / GUARDIAN", [
