@@ -138,13 +138,15 @@ body[data-view="u23"] .only-junior{display:none!important}
 .pb span{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel)}
 
 /* ---------- who we're looking for ---------- */
-.lookgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px}
+.lookgrid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:30px}
+.look ul{columns:2;column-gap:26px}
+@media(max-width:600px){.look ul{columns:1}}
 .look{border:1px solid var(--edge);background:var(--panel);border-radius:6px;padding:22px 24px 24px}
 .look h4{font-family:var(--body);font-weight:600;font-size:17px;letter-spacing:0;margin-bottom:10px}
 .look.jr h4{color:var(--blueup)}
 .look.ur h4{color:var(--redup)}
 .look ul{list-style:none}
-.look li{color:var(--steel);font-size:14px;padding:5px 0 5px 16px;position:relative}
+.look li{color:var(--steel);font-size:14px;padding:5px 0 5px 16px;position:relative;break-inside:avoid}
 .look li::before{content:"";position:absolute;left:0;top:13px;width:6px;height:6px;border-radius:1px;background:var(--edge2)}
 .looknote{margin-top:16px;color:var(--steel);font-size:14.5px;max-width:74ch}
 .looknote b{color:var(--chalk)}
