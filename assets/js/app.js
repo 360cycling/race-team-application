@@ -10,9 +10,9 @@
   var pickJ = $("pickJ"), pickU = $("pickU");
   var viewCopy = {
     junior: { eye: "360 JRT", head: "The Junior Race Team",
-      lede: "The Junior Race Team page: the blue kit and how to join it for 2027. Use the toggle to view the Under-23 team." },
+      lede: "The junior team, and how to join it for 2027. Use the toggle to view the Under-23 team." },
     u23: { eye: "360 U23", head: "The Under-23 Team",
-      lede: "The Under-23 team page: the red kit and how to join it for 2027. Use the toggle to view the junior team." }
+      lede: "The under-23 team, and how to join it for 2027. Use the toggle to view the junior team." }
   };
   function setView(v, fromUser){
     if (v !== "junior" && v !== "u23") v = "junior";

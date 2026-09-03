@@ -106,12 +106,11 @@ body[data-view="u23"] .only-junior{display:none!important}
 .pro .ph{height:170px;overflow:hidden}
 .pro .ph img{width:100%;height:100%;object-fit:cover}
 .pro .tx{padding:16px 20px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
-.pro h4{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:19px;letter-spacing:.03em}
-.pro h4 em{font-style:normal;color:var(--red)}
+.pro h4{font-family:var(--body);font-weight:600;font-size:16px;letter-spacing:0}
 .pro p{color:var(--steel);font-size:14px}
 
 /* race-brief scroll-throughs */
-.bfh{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(20px,2.8vw,30px);letter-spacing:.02em;margin:8px 0 8px}
+.bfh{font-family:var(--body);font-weight:600;font-size:19px;letter-spacing:0;margin:8px 0 8px}
 .bfgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
 .bf{margin:0}
 .bfwin{height:430px;overflow:hidden;border:1px solid var(--edge);border-radius:5px;background:#0E1118;position:relative}
@@ -141,7 +140,7 @@ body[data-view="u23"] .only-junior{display:none!important}
 /* ---------- who we're looking for ---------- */
 .lookgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px}
 .look{border:1px solid var(--edge);background:var(--panel);border-radius:6px;padding:22px 24px 24px}
-.look h4{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:20px;letter-spacing:.03em;margin-bottom:10px}
+.look h4{font-family:var(--body);font-weight:600;font-size:17px;letter-spacing:0;margin-bottom:10px}
 .look.jr h4{color:var(--blueup)}
 .look.ur h4{color:var(--redup)}
 .look ul{list-style:none}
@@ -155,7 +154,7 @@ body[data-view="u23"] .only-junior{display:none!important}
 .applywrap{max-width:860px;margin:0 auto;padding:0 24px}
 .step{margin-top:34px}
 .step .sh{display:flex;align-items:center;gap:13px;margin-bottom:16px}
-.step .sh h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(20px,2.6vw,26px);letter-spacing:.02em}
+.step .sh h3{font-family:var(--body);font-weight:600;font-size:19px;letter-spacing:0}
 .frm{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .fld{display:flex;flex-direction:column;gap:6px}
 .fld.full{grid-column:1/-1}
@@ -203,7 +202,7 @@ body[data-view="u23"] .only-junior{display:none!important}
 .privline b{color:var(--chalk)}
 .afterpane{display:none;margin-top:24px;border:1px solid var(--edge2);border-left:3px solid var(--red);background:var(--panel);border-radius:5px;padding:22px 24px}
 .afterpane.on{display:block}
-.afterpane h4{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:20px;margin-bottom:8px}
+.afterpane h4{font-family:var(--body);font-weight:600;font-size:18px;margin-bottom:8px}
 .afterpane p{color:var(--steel);font-size:14.5px}
 .afterpane p b{color:var(--chalk)}
 .afterpane .fn{font-family:var(--mono);color:#7DE8B5}
@@ -214,7 +213,7 @@ body[data-view="u23"] .only-junior{display:none!important}
 
 /* calendar card */
 .calask{border:1px solid var(--edge2);border-left:3px solid var(--red);border-radius:6px;background:var(--panel);padding:20px 24px;display:flex;gap:20px;align-items:center;flex-wrap:wrap}
-.calask h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:22px;letter-spacing:.02em}
+.calask h3{font-family:var(--body);font-weight:600;font-size:18px;letter-spacing:0}
 .calask p{color:var(--steel);font-size:14px;max-width:54ch;margin-top:5px}
 .calask .btns{margin-left:auto;display:flex;gap:12px;flex-wrap:wrap}
 
