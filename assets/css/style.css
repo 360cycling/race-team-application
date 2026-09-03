@@ -110,6 +110,20 @@ body[data-view="u23"] .only-junior{display:none!important}
 .pro h4 em{font-style:normal;color:var(--red)}
 .pro p{color:var(--steel);font-size:14px}
 
+/* race-brief scroll-throughs */
+.bfh{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(20px,2.8vw,30px);letter-spacing:.02em;margin:8px 0 8px}
+.bfgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+.bf{margin:0}
+.bfwin{height:430px;overflow:hidden;border:1px solid var(--edge);border-radius:5px;background:#0E1118;position:relative}
+.bfwin img{width:100%;height:auto;animation:bfscroll 34s ease-in-out infinite alternate}
+.bf:nth-child(2) .bfwin img{animation-duration:44s}
+.bf:nth-child(3) .bfwin img{animation-duration:38s}
+.bf:hover .bfwin img{animation-play-state:paused}
+@keyframes bfscroll{0%,4%{transform:translateY(0)}96%,100%{transform:translateY(calc(-100% + 430px))}}
+.bf figcaption{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-top:9px;text-align:center}
+@media(max-width:940px){.bfgrid{grid-template-columns:1fr}.bfwin{height:380px}}
+@media(prefers-reduced-motion:reduce){.bfwin img{animation:none}.bfwin{overflow-y:auto}}
+
 /* record strip */
 .record{margin-top:30px;border:1px solid var(--edge);border-left:3px solid var(--red);border-radius:6px;background:var(--panel);padding:20px 24px}
 .record h4{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--steel);margin-bottom:8px}
