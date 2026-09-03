@@ -65,9 +65,18 @@
       agehint.classList.add("on");
     }
   }
+  function actualAge(){
+    var v = f.dob.value; if (!v) return null;
+    var dob = new Date(v); if (isNaN(dob.getTime())) return null;
+    var now = new Date();
+    var a = now.getFullYear() - dob.getFullYear();
+    var m = now.getMonth() - dob.getMonth();
+    if (m < 0 || (m === 0 && now.getDate() < dob.getDate())) a--;
+    return a;
+  }
   function guardianCheck(){
-    var ra = racingAge();
-    var minor = (team() === "junior") || (ra !== null && ra < 19);
+    var age = actualAge();
+    var minor = (age !== null && age < 18);
     guardian.classList.toggle("on", minor);
   }
   function teamChanged(){ if (teamerr) teamerr.style.display = "none"; ageCheck(); guardianCheck(); saveDraft(); }
@@ -131,6 +140,7 @@
   function markErr(el, on){
     var fld = el.closest(".fld");
     if (fld) fld.classList.toggle("err", on);
+    if (on) el.setAttribute("aria-invalid", "true"); else el.removeAttribute("aria-invalid");
   }
   function validEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
   function validate(){
@@ -138,7 +148,7 @@
     if (!team()) { teamerr.style.display = "block"; ok = false; firstBad = document.querySelector(".teampick"); }
     var req = [
       ["name", function(v){ return v.trim().length >= 2; }],
-      ["dob", function(v){ return !!v; }],
+      ["dob", function(v){ if (!v) return false; var d = new Date(v); if (isNaN(d.getTime())) return false; var y = d.getFullYear(); return y >= 1965 && y <= 2014 && d <= new Date(); }],
       ["email", validEmail],
       ["town", function(v){ return v.trim().length >= 2; }],
       ["cover", function(v){ return v.trim().length >= 30; }]
@@ -190,7 +200,7 @@
       f.cover.value.trim(),
       "",
       "--------------------------------------------",
-      "CV: " + (cvName ? "attached - " + cvName : "attached"),
+      "CV: " + (cvName ? "attached - " + cvName : "to be attached to this email"),
       "Consent: information accurate; data processing for team selection agreed.",
       "Sent via the 360 application page."
     ].filter(function(r){ return r !== null; });
@@ -266,10 +276,23 @@
       var clone = document.documentElement.cloneNode(true);
       var b = clone.querySelector("#editbar"); if (b) b.parentNode.removeChild(b);
       var bodyEl = clone.querySelector("body");
+      // strip runtime state so the exported file is a clean default snapshot
       bodyEl.removeAttribute("contenteditable");
-      bodyEl.style.paddingBottom = "";
-      if (!bodyEl.getAttribute("style")) bodyEl.removeAttribute("style");
+      bodyEl.removeAttribute("data-view");
+      bodyEl.removeAttribute("style");
       [].slice.call(clone.querySelectorAll("[contenteditable]")).forEach(function(el){ el.removeAttribute("contenteditable"); });
+      // reset the team headings to their canonical (junior) defaults
+      var ce = clone.querySelector("#teamseye"); if (ce) ce.textContent = "360 JRT";
+      var ch = clone.querySelector("#teamshead"); if (ch) ch.textContent = "The Junior Race Team";
+      var cl = clone.querySelector("#teamslede"); if (cl) cl.textContent = "The Junior Race Team page: the blue kit and how to join it for 2027. Use the toggle to view the Under-23 team.";
+      // reset controls and transient UI
+      [].slice.call(clone.querySelectorAll(".swbtn")).forEach(function(el){ el.setAttribute("aria-pressed", String(el.getAttribute("data-view") === "junior")); });
+      [].slice.call(clone.querySelectorAll(".fld.err")).forEach(function(el){ el.classList.remove("err"); });
+      [].slice.call(clone.querySelectorAll(".consent.err")).forEach(function(el){ el.classList.remove("err"); });
+      var ah = clone.querySelector("#agehint"); if (ah) { ah.textContent = ""; ah.classList.remove("on"); }
+      var g = clone.querySelector("#guardian.on"); if (g) g.classList.remove("on");
+      var cz = clone.querySelector("#cvzone"); if (cz) cz.classList.remove("has");
+      var cf = clone.querySelector("#cvfile"); if (cf) { cf.textContent = ""; cf.classList.remove("on"); }
       var ap = clone.querySelector("#afterpane.on"); if (ap) ap.classList.remove("on");
       return "<!doctype html>\n" + clone.outerHTML;
     }
