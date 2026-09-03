@@ -113,14 +113,16 @@ body[data-view="u23"] .only-junior{display:none!important}
 .bfh{font-family:var(--body);font-weight:600;font-size:19px;letter-spacing:0;margin:8px 0 8px}
 .bfgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:22px}
 .bf{margin:0}
-.bfwin{height:430px;overflow:hidden;border:1px solid var(--edge);border-radius:5px;background:#0E1118;position:relative}
-.bfwin img{width:100%;height:auto;animation:bfscroll 34s ease-in-out infinite alternate}
-.bf:nth-child(2) .bfwin img{animation-duration:44s}
-.bf:nth-child(3) .bfwin img{animation-duration:38s}
+.bfwin{height:540px;overflow:hidden;border:1px solid var(--edge);border-radius:5px;background:#0E1118;position:relative}
+.bftitle{position:absolute;top:0;left:0;right:0;z-index:2;background:rgba(11,13,18,.92);color:#fff;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.11em;text-transform:uppercase;padding:9px 12px;border-bottom:1px solid rgba(255,255,255,.09);display:flex;align-items:center;gap:8px}
+.bftitle::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--red);flex:none}
+.bfwin img{width:100%;height:auto;animation:bfscroll 46s ease-in-out infinite alternate}
+.bf:nth-child(2) .bfwin img{animation-duration:54s}
+.bf:nth-child(3) .bfwin img{animation-duration:50s}
 .bf:hover .bfwin img{animation-play-state:paused}
-@keyframes bfscroll{0%,4%{transform:translateY(0)}96%,100%{transform:translateY(calc(-100% + 430px))}}
+@keyframes bfscroll{0%,11%{transform:translateY(0)}89%,100%{transform:translateY(calc(-100% + 540px))}}
 .bf figcaption{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-top:9px;text-align:center}
-@media(max-width:940px){.bfgrid{grid-template-columns:1fr}.bfwin{height:380px}}
+@media(max-width:940px){.bfgrid{grid-template-columns:1fr}.bfwin{height:460px}}
 @media(prefers-reduced-motion:reduce){.bfwin img{animation:none}.bfwin{overflow-y:auto}}
 
 /* record strip */
