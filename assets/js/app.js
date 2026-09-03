@@ -9,7 +9,7 @@
   var teamsEye = $("teamseye"), teamsHead = $("teamshead"), teamsLede = $("teamslede");
   var pickJ = $("pickJ"), pickU = $("pickU");
   var viewCopy = {
-    junior: { eye: "360 JRT", head: "The Junior Race Team",
+    junior: { eye: "360 Cycling JRT", head: "The Junior Race Team",
       lede: "The junior team, and how to join it for 2027. Use the toggle to view the Under-23 team." },
     u23: { eye: "360 U23", head: "The Under-23 Team",
       lede: "The under-23 team, and how to join it for 2027. Use the toggle to view the junior team." }
@@ -246,7 +246,7 @@
     bar.setAttribute("contenteditable", "false");
     bar.style.cssText = "position:fixed;left:0;right:0;bottom:0;z-index:99;background:#E11414;color:#fff;padding:12px 18px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:12px";
     bar.innerHTML = '<b style="letter-spacing:.08em;text-transform:uppercase">Editing mode</b>' +
-      '<span>Click any text and retype it. Nothing is public until you upload the downloaded file to GitHub (repo &rarr; index.html &rarr; replace).</span>' +
+      '<span>Click any text to retype it. Drag any photo to reposition it in its frame. Nothing is public until you upload the downloaded file to GitHub (repo &rarr; index.html &rarr; replace).</span>' +
       '<span style="margin-left:auto;display:flex;gap:8px">' +
       '<button id="ed_dl" style="background:#fff;color:#0B0D12;border:0;border-radius:3px;padding:8px 14px;font-family:inherit;font-weight:600;cursor:pointer">Download HTML</button>' +
       '<button id="ed_copy" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.5);border-radius:3px;padding:8px 14px;font-family:inherit;cursor:pointer">Copy HTML</button>' +
@@ -254,6 +254,25 @@
     document.body.appendChild(bar);
     document.body.contentEditable = "true";
     document.body.style.paddingBottom = "70px";
+
+    /* drag any cover photo to reposition it; the object-position persists in the download */
+    [].slice.call(document.querySelectorAll(".team .shots .ph img, .pro .ph img, .photoband .ph img")).forEach(function(img){
+      img.style.cursor = "move";
+      img.setAttribute("draggable", "false");
+      img.setAttribute("contenteditable", "false");
+      var dragging = false, sx = 0, sy = 0, spx = 50, spy = 50;
+      function parsePos(){ var p = (img.style.objectPosition || "50% 50%").split(/\s+/); return [parseFloat(p[0]), parseFloat(p[1])].map(function(n){ return isNaN(n) ? 50 : n; }); }
+      img.addEventListener("mousedown", function(e){ e.preventDefault(); e.stopPropagation(); dragging = true; sx = e.clientX; sy = e.clientY; var p = parsePos(); spx = p[0]; spy = p[1]; document.body.style.userSelect = "none"; });
+      window.addEventListener("mouseup", function(){ if (dragging) { dragging = false; document.body.style.userSelect = ""; } });
+      window.addEventListener("mousemove", function(e){
+        if (!dragging) return;
+        var r = img.getBoundingClientRect();
+        var dpx = ((e.clientX - sx) / r.width) * 100, dpy = ((e.clientY - sy) / r.height) * 100;
+        var nx = Math.max(0, Math.min(100, spx - dpx)), ny = Math.max(0, Math.min(100, spy - dpy));
+        img.style.objectPosition = Math.round(nx) + "% " + Math.round(ny) + "%";
+      });
+    });
+
     function serialize(){
       var clone = document.documentElement.cloneNode(true);
       var b = clone.querySelector("#editbar"); if (b) b.parentNode.removeChild(b);
