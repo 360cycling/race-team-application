@@ -111,7 +111,7 @@ body[data-view="u23"] .only-junior{display:none!important}
 
 /* race-brief scroll-throughs */
 .bfh{font-family:var(--body);font-weight:600;font-size:19px;letter-spacing:0;margin:8px 0 8px}
-.bfgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+.bfgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:22px}
 .bf{margin:0}
 .bfwin{height:430px;overflow:hidden;border:1px solid var(--edge);border-radius:5px;background:#0E1118;position:relative}
 .bfwin img{width:100%;height:auto;animation:bfscroll 34s ease-in-out infinite alternate}
