@@ -4,18 +4,6 @@
   var TEAM_EMAIL = "info@360cycling.co.uk";
   var $ = function(id){ return document.getElementById(id); };
 
-  /* ---------- mobile navigation ---------- */
-  var navToggle = $("navtoggle"), navLinks = $("navlinks");
-  if (navToggle) {
-    navToggle.addEventListener("click", function(){
-      var open = navLinks.classList.toggle("open");
-      navToggle.setAttribute("aria-expanded", String(open));
-    });
-    navLinks.addEventListener("click", function(e){
-      if (e.target.tagName === "A") { navLinks.classList.remove("open"); navToggle.setAttribute("aria-expanded", "false"); }
-    });
-  }
-
   /* ---------- team view switcher (one team shown at a time) ---------- */
   var swBtns = [].slice.call(document.querySelectorAll(".swbtn"));
   var teamsEye = $("teamseye"), teamsHead = $("teamshead"), teamsLede = $("teamslede");
@@ -41,18 +29,20 @@
   swBtns.forEach(function(b){
     b.addEventListener("click", function(){ setView(b.getAttribute("data-view"), true); });
   });
+  [].slice.call(document.querySelectorAll(".teampick label")).forEach(function(lb){
+    lb.addEventListener("keydown", function(ev){
+      if (ev.key === " " || ev.key === "Enter") { ev.preventDefault(); $(lb.htmlFor).checked = true; teamChanged(); }
+    });
+  });
 
   /* ---------- form fields ---------- */
   var f = {
     name: $("f_name"), dob: $("f_dob"), email: $("f_email"), phone: $("f_phone"),
-    town: $("f_town"), nationality: $("f_nationality"),
-    club: $("f_club"), cat: $("f_cat"), bcid: $("f_bcid"), discipline: $("f_discipline"), years: $("f_years"),
-    results: $("f_results"), programme: $("f_programme"), strengths: $("f_strengths"), ridertype: $("f_ridertype"), power: $("f_power"),
-    plans: $("f_plans"), ambitions: $("f_ambitions"), why: $("f_why"), lookingfor: $("f_lookingfor"),
-    strava: $("f_strava"), otherlinks: $("f_otherlinks"),
+    town: $("f_town"), club: $("f_club"), cover: $("f_cover"),
     gname: $("f_gname"), gcontact: $("f_gcontact")
   };
   var agehint = $("agehint"), teamerr = $("teamerr"), guardian = $("guardian");
+  var covercnt = $("covercnt");
 
   function team(){ return pickJ.checked ? "junior" : (pickU.checked ? "u23" : ""); }
   function racingAge(){
@@ -85,6 +75,9 @@
   pickJ.addEventListener("change", teamChanged);
   pickU.addEventListener("change", teamChanged);
 
+  function updCnt(){ if (covercnt) covercnt.textContent = f.cover.value.length + " / 1500"; }
+  f.cover.addEventListener("input", updCnt);
+
   /* ---------- session draft (device only, dies with the tab) ---------- */
   function saveDraft(){
     try {
@@ -98,10 +91,11 @@
       var raw = sessionStorage.getItem("r360draft"); if (!raw) return;
       var d = JSON.parse(raw);
       Object.keys(f).forEach(function(k){ if (f[k] && d[k]) f[k].value = d[k]; });
+      updCnt();
     } catch(e){}
   }
   Object.keys(f).forEach(function(k){ if (f[k]) f[k].addEventListener("input", saveDraft); });
-  loadDraft();
+  loadDraft(); updCnt();
 
   /* ---------- CV attach ---------- */
   var cvzone = $("cvzone"), cvinput = $("f_cv"), cvfileEl = $("cvfile");
@@ -147,8 +141,7 @@
       ["dob", function(v){ return !!v; }],
       ["email", validEmail],
       ["town", function(v){ return v.trim().length >= 2; }],
-      ["results", function(v){ return v.trim().length >= 5; }],
-      ["why", function(v){ return v.trim().length >= 20; }]
+      ["cover", function(v){ return v.trim().length >= 30; }]
     ];
     if (guardian.classList.contains("on")) {
       req.push(["gname", function(v){ return v.trim().length >= 2; }]);
@@ -179,58 +172,29 @@
 
   /* ---------- compose the application ---------- */
   function line(k, v){ return (v && v.trim()) ? (k + ": " + v.trim()) : null; }
-  function block(title, rows){
-    var body = rows.filter(function(r){ return r !== null; });
-    if (!body.length) return null;
-    return title + "\n" + body.join("\n");
-  }
   function buildPlain(){
     var ra = racingAge();
-    var parts = [
+    var rows = [
       "360 CYCLING - 2027 " + (team() === "junior" ? "JUNIOR (360 JRT)" : "UNDER-23") + " APPLICATION",
       "--------------------------------------------",
-      block("RIDER DETAILS", [
-        line("Name", f.name.value),
-        line("Date of birth", f.dob.value) + (ra !== null ? "  (racing age " + ra + " in 2027)" : ""),
-        line("Email", f.email.value),
-        line("Phone", f.phone.value),
-        line("Location", f.town.value),
-        line("Nationality", f.nationality.value)
-      ]),
-      block("CYCLING INFORMATION", [
-        line("Current team / club", f.club.value),
-        line("Current category", f.cat.value),
-        line("BC / UCI ID", f.bcid.value),
-        line("Primary discipline", f.discipline.value),
-        line("Years racing", f.years.value)
-      ]),
-      block("PERFORMANCE / RACING", [
-        line("Key results", f.results.value),
-        line("Recent race programme", f.programme.value),
-        line("Strengths", f.strengths.value),
-        line("Type of rider", f.ridertype.value),
-        line("Power information", f.power.value)
-      ]),
-      block("2027", [
-        line("Current plans", f.plans.value),
-        line("Racing ambitions", f.ambitions.value),
-        line("Why 360 Cycling", f.why.value),
-        line("Looking for from a team", f.lookingfor.value)
-      ]),
-      block("LINKS", [
-        line("Strava", f.strava.value),
-        line("Other", f.otherlinks.value)
-      ]),
-      guardian.classList.contains("on") ? block("PARENT / GUARDIAN", [
-        line("Name", f.gname.value),
-        line("Contact", f.gcontact.value)
-      ]) : null,
+      line("Name", f.name.value),
+      line("Date of birth", f.dob.value) + (ra !== null ? "  (racing age " + ra + " in 2027)" : ""),
+      line("Town / region", f.town.value),
+      line("Email", f.email.value),
+      line("Phone", f.phone.value),
+      line("Current club / team", f.club.value),
+      guardian.classList.contains("on") ? line("Parent / guardian", f.gname.value) : null,
+      guardian.classList.contains("on") ? line("Parent / guardian contact", f.gcontact.value) : null,
+      "",
+      "COVER LETTER",
+      f.cover.value.trim(),
+      "",
       "--------------------------------------------",
       "CV: " + (cvName ? "attached - " + cvName : "attached"),
       "Consent: information accurate; data processing for team selection agreed.",
       "Sent via the 360 application page."
-    ].filter(function(p){ return p !== null; });
-    return parts.join("\n\n");
+    ].filter(function(r){ return r !== null; });
+    return rows.join("\n");
   }
 
   var sendbtn = $("sendbtn"), afterpane = $("afterpane"), aftercv = $("aftercv"), plainapp = $("plainapp");
@@ -306,24 +270,23 @@
       bodyEl.style.paddingBottom = "";
       if (!bodyEl.getAttribute("style")) bodyEl.removeAttribute("style");
       [].slice.call(clone.querySelectorAll("[contenteditable]")).forEach(function(el){ el.removeAttribute("contenteditable"); });
-      var open = clone.querySelector("#navlinks.open"); if (open) open.classList.remove("open");
       var ap = clone.querySelector("#afterpane.on"); if (ap) ap.classList.remove("on");
       return "<!doctype html>\n" + clone.outerHTML;
     }
-    document.getElementById("ed_dl").addEventListener("click", function(){
+    $("ed_dl").addEventListener("click", function(){
       var blob = new Blob([serialize()], { type: "text/html" });
       var a = document.createElement("a");
       a.href = URL.createObjectURL(blob);
       a.download = "index.html";
       document.body.appendChild(a); a.click(); a.remove();
     });
-    document.getElementById("ed_copy").addEventListener("click", function(){
+    $("ed_copy").addEventListener("click", function(){
       var t = serialize();
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t);
-      var btn = document.getElementById("ed_copy");
+      var btn = $("ed_copy");
       btn.textContent = "Copied"; setTimeout(function(){ btn.textContent = "Copy HTML"; }, 1600);
     });
-    document.getElementById("ed_exit").addEventListener("click", function(){
+    $("ed_exit").addEventListener("click", function(){
       try { location.href = location.pathname; } catch(e){}
     });
   }

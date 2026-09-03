@@ -9,14 +9,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Schibsted+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <!--TITLE_END-->
-<meta name="description" content="Applications are open for 360 Cycling's 2027 Junior and Under-23 race teams: a structured race and development programme with racing in the UK and selected European events.">
+<meta name="description" content="Applications are open for 360 Cycling's 2027 Junior and Under-23 race teams. Proper racing, a team car in the convoy, and a two-minute application.">
 <link rel="canonical" href="https://360cycling.github.io/race-team-application/">
 <link rel="icon" type="image/png" href="assets/images/logo144.png">
 <link rel="apple-touch-icon" href="assets/images/logo144.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="360 Cycling Race Team">
 <meta property="og:title" content="360 Cycling | 2027 Junior &amp; U23 Team Applications">
-<meta property="og:description" content="A structured race and development programme for ambitious Junior and Under-23 riders, with racing in the UK and selected European events. Applications for 2027 are open.">
+<meta property="og:description" content="Applications are open for 360 Cycling's 2027 Junior and Under-23 race teams. Proper racing, a team car in the convoy, and a two-minute application.">
 <meta property="og:url" content="https://360cycling.github.io/race-team-application/">
 <meta property="og:image" content="https://360cycling.github.io/race-team-application/og_card.jpg">
 <meta property="og:image:width" content="1200">
@@ -28,51 +28,53 @@
 </head>
 <body>
 <!--BODY_START-->
-<a class="skip" href="#apply" style="position:absolute;left:-9999px">Skip to the application form</a>
 
-<header id="nav">
+<!-- fixed top bar -->
+<header id="bar">
   <div class="in">
-    <img src="assets/images/logo144.png" alt="360 Cycling" width="32" height="32">
-    <div class="t"><b>360</b> Cycling</div>
-    <nav class="links" id="navlinks" aria-label="Page sections">
-      <a href="#overview">Overview</a>
-      <a href="#teams">Teams</a>
-      <a href="#programme">Programme</a>
-      <a href="#development">Development</a>
-      <a href="#riders">Who we're looking for</a>
-    </nav>
-    <div class="apply-link"><a class="btn btn-red" href="#apply">Apply</a></div>
-    <button id="navtoggle" aria-label="Open menu" aria-expanded="false" aria-controls="navlinks">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-    </button>
+    <img src="assets/images/logo144.png" alt="360 Cycling" width="34" height="34">
+    <div class="t"><b>360</b> Race Teams</div>
+    <div class="sp"></div>
+    <a class="btn btn-red" href="#apply">Apply now</a>
   </div>
 </header>
 
 <!-- ================= HERO ================= -->
-<section id="overview">
-  <div class="bg"><img src="assets/images/hero_gravel.jpg" alt="A 360 junior rider racing on a dusty gravel sector ahead of the peloton" width="1920" height="1280" fetchpriority="high"></div>
+<section id="hero">
+  <div class="bg"><img src="assets/images/hero_gravel.jpg" srcset="assets/images/720/hero_gravel.jpg 720w, assets/images/hero_gravel.jpg 1500w" sizes="(max-width: 680px) 100vw, 720px" alt="A 360 junior rider racing on a dusty gravel sector ahead of the peloton" width="1920" height="1280" fetchpriority="high"></div>
   <div class="scrim"></div>
   <div class="content">
-    <h1>360 Cycling<small>2027 Junior &amp; U23 Team Applications</small></h1>
-    <div class="ctas" style="margin-top:24px">
-      <a class="btn btn-red" href="#apply">Apply for the 2027 team</a>
-      <a class="btn btn-ghost" href="#programme">The programme</a>
+    <div class="club">
+      <img src="assets/images/logo144.png" alt="360 Cycling roundel" width="46" height="46">
+      <div>
+        <div class="l1">360 Cycling Race Team</div>
+        <div class="l2">Bury &middot; Greater Manchester</div>
+      </div>
+    </div>
+    <h1>
+      <span style="display:block">Ride for</span>
+      <span class="r" style="display:block">three sixty</span>
+    </h1>
+    <p class="sub">Applications are open for the <b>2027 Junior</b> and <b>Under-23</b> race teams.</p>
+    <div class="ctas">
+      <a class="btn btn-blue only-junior" href="#apply">Apply &middot; Junior team</a>
+      <a class="btn btn-red only-u23" href="#apply">Apply &middot; U23 team</a>
     </div>
   </div>
 </section>
-<div class="stripe"></div>
+<div class="stripe thick"></div>
 
-<!-- ================= TEAMS ================= -->
+<!-- centered team switch -->
 <div class="teamband">
   <div class="lbl">Choose a squad</div>
   <div class="switch" role="group" aria-label="Choose a team page">
     <button type="button" class="swbtn swj" data-view="junior" aria-pressed="true">Junior &middot; JRT</button>
     <button type="button" class="swbtn swu" data-view="u23" aria-pressed="false">Under-23</button>
   </div>
-  <p class="wnote">These are the men's squads. Female riders: contact <a href="mailto:kate@360cycling.co.uk">kate@360cycling.co.uk</a> for women's team information.</p>
 </div>
 
-<section id="teams" style="padding-top:36px">
+<!-- ================= TEAMS ================= -->
+<section id="teams" style="padding-top:40px">
   <div class="wrap">
     <p class="eyebrow" id="teamseye">360 JRT</p>
     <h2 class="sec" id="teamshead">The Junior Race Team</h2>
@@ -83,7 +85,7 @@
       <div class="head">
         <h3>360 <span>JRT</span> &middot; Junior Race Team</h3>
         <p class="tag">The blue kit</p>
-        <p class="applynote"><a href="#apply">Applications are at the bottom of this page</a></p>
+        <p class="applynote"><a href="#apply">Applying takes two minutes, at the bottom of this page &darr;</a></p>
       </div>
       <div class="facts">
         <div><p class="k">Who it's for</p><p class="v">Racing age 17 or 18 in 2027. British Cycling racing age is your age on 31 December 2027, so riders born 2009 or 2010.</p></div>
@@ -91,13 +93,11 @@
         <div><p class="k">The aim</p><p class="v">Learn to race properly, get seen, and arrive at U23 level already knowing how a hard race works.</p></div>
       </div>
       <div class="body">
-        <p>The Junior Race Team develops riders through their junior years: briefed starts, a car behind the race, and a team that rides together. The aim is to produce <b>complete bike racers</b>, prepared for the next level.</p>
+        <p>The Junior Race Team develops riders through their junior years: briefed starts, a car behind the race, and a team that rides together. Bring the engine, we'll teach the craft.</p>
         <div class="shots">
-          <div class="ph wide"><img loading="lazy" src="assets/images/jrt_gantry.jpg" alt="Junior riders lined up under the National Series start gantry at Melton Mowbray" style="object-position:50% 55%"></div>
-          <div class="ph"><img loading="lazy" src="assets/images/jrt_start.jpg" alt="360 JRT riders on the start line" style="object-position:50% 35%"></div>
-          <div class="ph"><img loading="lazy" src="assets/images/jrt_closeup.jpg" alt="A 360 JRT rider mid-race on the drops" style="object-position:50% 30%"></div>
-          <div class="ph"><img loading="lazy" src="assets/images/jrt_climb.jpg" alt="A JRT rider climbing on a training camp" style="object-position:50% 68%"></div>
-          <div class="ph"><img loading="lazy" src="assets/images/jrt_jerseys.jpg" alt="Three riders in leaders' jerseys at the Junior Tour in Wales" style="object-position:50% 30%"></div>
+          <div class="ph wide"><img loading="lazy" src="assets/images/jrt_gantry.jpg" srcset="assets/images/720/jrt_gantry.jpg 720w, assets/images/jrt_gantry.jpg 1500w" sizes="(max-width: 680px) 100vw, 720px" alt="Junior riders lined up under the National Series start gantry at Melton Mowbray" style="object-position:50% 55%"></div>
+          <div class="ph"><img loading="lazy" src="assets/images/jrt_start.jpg" srcset="assets/images/720/jrt_start.jpg 720w, assets/images/jrt_start.jpg 1500w" sizes="(max-width: 680px) 100vw, 720px" alt="360 JRT riders on the start line" style="object-position:50% 35%"></div>
+          <div class="ph"><img loading="lazy" src="assets/images/jrt_jerseys.jpg" srcset="assets/images/720/jrt_jerseys.jpg 720w, assets/images/jrt_jerseys.jpg 1500w" sizes="(max-width: 680px) 100vw, 720px" alt="Three riders in leaders' jerseys at the Junior Tour in Wales" style="object-position:50% 30%"></div>
         </div>
       </div>
     </article>
@@ -107,7 +107,7 @@
       <div class="head">
         <h3>360 <span>U23</span> &middot; Under-23 Team</h3>
         <p class="tag">The red kit</p>
-        <p class="applynote"><a href="#apply">Applications are at the bottom of this page</a></p>
+        <p class="applynote"><a href="#apply">Applying takes two minutes, at the bottom of this page &darr;</a></p>
       </div>
       <div class="facts">
         <div><p class="k">Who it's for</p><p class="v">Riders from racing age 18 up. Primarily focused on under-23 development, with offers considered for over-23s.</p></div>
@@ -115,18 +115,12 @@
         <div><p class="k">The aim</p><p class="v">Race where it's hardest, measure yourself honestly, and put results next to your name.</p></div>
       </div>
       <div class="body">
-        <p>The Under-23 team races at national level in the UK with a European element. <b>Podiums came home in this kit in 2026.</b> Selection and support are built around long-term development as well as results.</p>
+        <p>The red kit races where it's hardest, in the UK and on the continent. <b>Podiums came home in this kit in 2026</b>, and the bar is set there.</p>
         <div class="shots">
-          <div class="ph"><img loading="lazy" src="assets/images/u23_group.jpg" alt="The U23 squad together on a Mallorca harbourside during winter camp" style="object-position:50% 42%"></div>
-          <div class="ph"><img loading="lazy" src="assets/images/u23_podium.jpg" alt="The U23 team presented on stage before a race in France" style="object-position:50% 62%"></div>
-          <div class="ph wide"><img loading="lazy" src="assets/images/u23_rapeseed.jpg" alt="360 riders on the front of the peloton in France" style="object-position:50% 55%"></div>
-          <div class="ph"><img loading="lazy" src="assets/images/u23_samer.jpg" alt="A 360 rider celebrating at the finish at Samer in France" style="object-position:50% 45%"></div>
-          <div class="ph"><img loading="lazy" src="assets/images/u23_front.jpg" alt="A 360 U23 rider leading a strung-out group" style="object-position:50% 30%"></div>
-          <div class="ph"><img loading="lazy" src="assets/images/u23_blur.jpg" alt="A 360 rider at speed past the barriers" style="object-position:50% 40%"></div>
-          <div class="ph"><img loading="lazy" src="assets/images/u23_training.jpg" alt="Riders on a recon ride through a French village" style="object-position:50% 58%"></div>
-          <div class="ph"><img loading="lazy" src="assets/images/u23_corner44.jpg" alt="A rider cornering behind the race convoy" style="object-position:45% 55%"></div>
-          <div class="ph"><img loading="lazy" src="assets/images/u23_mirror.jpg" alt="A rider seen from inside the team car" style="object-position:50% 35%"></div>
-          <div class="ph wide"><img loading="lazy" src="assets/images/u23_moor.jpg" alt="A lone 360 rider racing across open moorland" style="object-position:50% 45%"></div>
+          <div class="ph wide"><img loading="lazy" src="assets/images/u23_rapeseed.jpg" srcset="assets/images/720/u23_rapeseed.jpg 720w, assets/images/u23_rapeseed.jpg 1500w" sizes="(max-width: 680px) 100vw, 720px" alt="360 riders on the front of the peloton in France" style="object-position:50% 55%"></div>
+          <div class="ph"><img loading="lazy" src="assets/images/u23_group.jpg" srcset="assets/images/720/u23_group.jpg 720w, assets/images/u23_group.jpg 1500w" sizes="(max-width: 680px) 100vw, 720px" alt="The U23 squad together on a Mallorca harbourside during winter camp" style="object-position:50% 42%"></div>
+          <div class="ph"><img loading="lazy" src="assets/images/u23_samer.jpg" srcset="assets/images/720/u23_samer.jpg 720w, assets/images/u23_samer.jpg 1500w" sizes="(max-width: 680px) 100vw, 720px" alt="A 360 rider celebrating at the finish at Samer in France" style="object-position:50% 45%"></div>
+          <div class="ph wide"><img loading="lazy" src="assets/images/u23_moor.jpg" srcset="assets/images/720/u23_moor.jpg 720w, assets/images/u23_moor.jpg 1500w" sizes="(max-width: 680px) 100vw, 720px" alt="A lone 360 rider racing across open moorland" style="object-position:50% 45%"></div>
         </div>
       </div>
     </article>
@@ -138,91 +132,38 @@
 <!-- ================= PROGRAMME ================= -->
 <section id="programme" style="scroll-margin-top:60px">
   <div class="wrap">
-    <p class="eyebrow">The programme</p>
-    <h2 class="sec">What the team provides</h2>
-    <p class="lede">The programme is built so that riders can concentrate on racing. What follows applies across both squads, adjusted to age and level.</p>
-    <div class="cardgrid">
-      <div class="card">
-        <h4>Race programme</h4>
-        <ul>
-          <li>National A races</li>
-          <li>National B races</li>
-          <li>U23 National Road Series</li>
-          <li>Selected European races</li>
-          <li>Stage races</li>
-          <li>Appropriate UCI opportunities where applicable</li>
-        </ul>
+    <p class="eyebrow">What you get</p>
+    <h2 class="sec">Built like a pro team,<br>run for riders</h2>
+    <p class="lede">Every part of the programme exists to take a job off your shoulders so the only thing left to do is <b>race</b>.</p>
+    <div class="progrid">
+      <div class="pro">
+        <div class="ph"><img loading="lazy" src="assets/images/u23_car.jpg" srcset="assets/images/720/u23_car.jpg 720w, assets/images/u23_car.jpg 1500w" sizes="(max-width: 680px) 100vw, 720px" alt="The 360 team car with spare bikes on the roof following a rider"></div>
+        <div class="tx"><h4>Race-day <em>operation</em></h4><p>Team car in the convoy, spares on the roof, gazebo up, bottles done. You warm up; the machine runs around you.</p></div>
       </div>
-      <div class="card">
-        <h4>Race support</h4>
-        <ul>
-          <li>Directeur Sportif support</li>
-          <li>Mechanics</li>
-          <li>Feed support</li>
-          <li>Team vehicles</li>
-          <li>Race-day organisation</li>
-          <li>Post-race support at selected events</li>
-        </ul>
+      <div class="pro">
+        <div class="ph"><img loading="lazy" src="assets/images/culture_brief.jpg" srcset="assets/images/720/culture_brief.jpg 720w, assets/images/culture_brief.jpg 1500w" sizes="(max-width: 680px) 100vw, 720px" alt="The team gathered for an evening race briefing"></div>
+        <div class="tx"><h4>Race <em>intelligence</em></h4><p>Every A-race gets a proper brief: course notes, key sectors, wind, a plan A and a plan B.</p></div>
       </div>
-      <div class="card">
-        <h4>European racing</h4>
-        <ul>
-          <li>Selected French and European races</li>
-          <li>Race blocks where appropriate</li>
-          <li>Experience gained outside the UK</li>
-        </ul>
+      <div class="pro">
+        <div class="ph"><img loading="lazy" src="assets/images/jrt_coach.jpg" srcset="assets/images/720/jrt_coach.jpg 720w, assets/images/jrt_coach.jpg 1500w" sizes="(max-width: 680px) 100vw, 720px" alt="A coach and rider reviewing data beside the team car" style="object-position:50% 45%"></div>
+        <div class="tx"><h4>Coaching that <em>watches</em></h4><p>Structured feedback, testing days and numbers reviewed by people who know what they mean.</p></div>
       </div>
-    </div>
-    <div class="photoband">
-      <div class="ph"><img loading="lazy" src="assets/images/u23_car.jpg" alt="The 360 team car with spare bikes on the roof following a rider"></div>
-      <div class="ph"><img loading="lazy" src="assets/images/culture_brief.jpg" alt="The team gathered for an evening race briefing"></div>
-      <div class="ph"><img loading="lazy" src="assets/images/jrt_coach.jpg" alt="A coach and rider reviewing data beside the team car" style="object-position:50% 45%"></div>
-      <div class="ph"><img loading="lazy" src="assets/images/culture_hands.jpg" alt="A staff member and rider after the finish of a race" style="object-position:50% 30%"></div>
+      <div class="pro">
+        <div class="ph"><img loading="lazy" src="assets/images/u23_vineyard.jpg" srcset="assets/images/720/u23_vineyard.jpg 720w, assets/images/u23_vineyard.jpg 1500w" sizes="(max-width: 680px) 100vw, 720px" alt="Two riders rolling past French vineyards behind the team car" style="object-position:50% 52%"></div>
+        <div class="tx"><h4>A European <em>education</em></h4><p>Selected French and European races, with race blocks where appropriate. Experience you cannot get at home.</p></div>
+      </div>
+      <div class="pro">
+        <div class="ph"><img loading="lazy" src="assets/images/u23_mountains.jpg" srcset="assets/images/720/u23_mountains.jpg 720w, assets/images/u23_mountains.jpg 1500w" sizes="(max-width: 680px) 100vw, 720px" alt="The squad climbing a mountain road in the sun on a warm-weather camp" style="object-position:50% 45%"></div>
+        <div class="tx"><h4>The <em>camp</em></h4><p>A warm-weather team camp to build the winter engine and turn a roster into a team before the flag drops.</p></div>
+      </div>
+      <div class="pro">
+        <div class="ph"><img loading="lazy" src="assets/images/culture_hands.jpg" srcset="assets/images/720/culture_hands.jpg 720w, assets/images/culture_hands.jpg 1500w" sizes="(max-width: 680px) 100vw, 720px" alt="A staff member and rider after the finish of a race" style="object-position:50% 30%"></div>
+        <div class="tx"><h4>People in your <em>corner</em></h4><p>From sign-on to the last barrier, someone has your back. Ask the riders. Better: come and find out.</p></div>
+      </div>
     </div>
     <div class="record">
       <h4>The record so far</h4>
-      <p>In 2026 the team raced junior and under-23 calendars at national level in the UK, and the under-23 squad completed a European racing block including French elite nationals, Belgian kermesse racing and Paris&ndash;Troyes. <b>Podium results came home from France.</b> Full results are available to riders and parents on request.</p>
-    </div>
-  </div>
-</section>
-
-<div class="stripe"></div>
-
-<!-- ================= DEVELOPMENT ================= -->
-<section id="development" style="scroll-margin-top:60px">
-  <div class="wrap">
-    <p class="eyebrow">Development</p>
-    <h2 class="sec">How riders progress</h2>
-    <p class="lede">Development at 360 is structured and long term. The measure of a season is the rider it produces, not only the results column.</p>
-    <div class="cardgrid">
-      <div class="card">
-        <h4>Coaching &amp; development</h4>
-        <ul>
-          <li>Structured coaching</li>
-          <li>Performance review</li>
-          <li>Training planning</li>
-          <li>Rider development</li>
-          <li>Race preparation</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h4>Team environment</h4>
-        <ul>
-          <li>Team tactics</li>
-          <li>Rider communication</li>
-          <li>Professional expectations</li>
-          <li>Development of race craft</li>
-          <li>Working as part of a team</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h4>Progression</h4>
-        <ul>
-          <li>Junior to U23 development</li>
-          <li>Building riders towards higher-level racing</li>
-          <li>Long-term development, not only individual results</li>
-        </ul>
-      </div>
+      <p>In 2026 the team raced junior and under-23 calendars at national level in the UK, and the under-23 squad completed a European racing block. <b>Podium results came home from France.</b> Full results are available to riders and parents on request.</p>
     </div>
   </div>
 </section>
@@ -234,11 +175,10 @@
   <div class="wrap">
     <p class="eyebrow">Who we're looking for</p>
     <h2 class="sec">Selection is about more than watts</h2>
-    <p class="lede">Selection is not based only on power numbers or individual results. The team looks for riders who want to develop, and who make the group stronger.</p>
+    <p class="lede">The team looks for riders who want to develop, and who make the group stronger.</p>
     <div class="lookgrid">
       <div class="look jr">
         <h4>Junior riders</h4>
-        <p>Racing age 17 or 18 in 2027.</p>
         <ul>
           <li>Racing experience appropriate to the junior calendar</li>
           <li>Commitment to structured training</li>
@@ -249,7 +189,6 @@
       </div>
       <div class="look ur">
         <h4>U23 riders</h4>
-        <p>Racing age 18 and up, focused on under-23 development.</p>
         <ul>
           <li>Strong racing ambition and appropriate experience</li>
           <li>Willingness to work for teammates</li>
@@ -259,7 +198,7 @@
         </ul>
       </div>
     </div>
-    <p class="looknote">If you are not sure whether your experience fits, <b>apply anyway and set out where you are</b>. Every application is read.</p>
+    <p class="looknote">Not sure whether your experience fits? <b>Apply anyway and set out where you are.</b> Every application is read.</p>
   </div>
 </section>
 
@@ -267,9 +206,8 @@
 <section id="apply" style="scroll-margin-top:60px">
   <div class="applywrap">
     <p class="eyebrow">Applications &middot; 2027 season</p>
-    <h2 class="sec">Apply for the 2027 team</h2>
-    <p class="lede">The form takes a few minutes. Your application is sent directly to the team by email and <b>nothing you type is stored on any server</b>.</p>
-    <p class="wnote" style="margin-top:10px">This application covers the men's Junior and Under-23 squads. Female riders should contact <a href="mailto:kate@360cycling.co.uk">kate@360cycling.co.uk</a> for women's team information.</p>
+    <h2 class="sec">Two minutes.<br>One decision.</h2>
+    <p class="lede">Pick a squad, tell us who you are, and send it with your CV. It goes <b>straight to Josh's inbox</b> and every application gets read. <b>Nothing you type here is stored anywhere.</b></p>
 
     <div class="panelblock">
       <p class="pbl">Every application is reviewed by the team's staff</p>
@@ -284,126 +222,86 @@
     </div>
 
     <form id="appform" novalidate>
-      <div class="fsec">
-        <h3>Squad</h3>
-        <p class="fnote">Choose the team you are applying for.</p>
-        <div class="frm">
-          <div class="teampick">
-            <input type="radio" name="team" id="pickJ" value="junior">
-            <label for="pickJ" tabindex="0">
-              <span class="nm">Junior &middot; 360 JRT</span>
-              <span class="el">Racing age 17&ndash;18 in 2027 (born 2009 or 2010)</span>
-            </label>
-            <input type="radio" name="team" id="pickU" value="u23">
-            <label for="pickU" tabindex="0">
-              <span class="nm">Under-23</span>
-              <span class="el">Racing age 18+ &middot; over-23s considered</span>
-            </label>
-          </div>
-          <p class="agehint" id="agehint" role="status"></p>
-          <p class="emsg" id="teamerr" style="display:none;grid-column:1/-1;color:var(--redup);font-size:12.5px">Choose a team to apply for.</p>
+      <!-- STEP 1 -->
+      <div class="step">
+        <div class="sh"><span class="plate">01</span><h3>Pick your team</h3></div>
+        <div class="teampick">
+          <input type="radio" name="team" id="pickJ" value="junior">
+          <label for="pickJ" tabindex="0">
+            <span class="nm">Junior &middot; 360 JRT</span>
+            <span class="el">Racing age 17&ndash;18 in 2027 <span style="white-space:nowrap">(born 2009 or 2010)</span></span>
+          </label>
+          <input type="radio" name="team" id="pickU" value="u23">
+          <label for="pickU" tabindex="0">
+            <span class="nm">Under-23</span>
+            <span class="el">Racing age 18+ &middot; over-23s considered</span>
+          </label>
         </div>
+        <p class="agehint" id="agehint" role="status"></p>
+        <p class="emsg" id="teamerr" style="display:none;color:var(--redup);font-size:12.5px;margin-top:8px">Choose a team to apply for.</p>
       </div>
 
-      <div class="fsec">
-        <h3>Rider details</h3>
+      <!-- STEP 2 -->
+      <div class="step">
+        <div class="sh"><span class="plate">02</span><h3>Who you are</h3></div>
         <div class="frm">
           <div class="fld"><label for="f_name">Full name</label><input id="f_name" type="text" autocomplete="name" required><p class="emsg">We need your name.</p></div>
           <div class="fld"><label for="f_dob">Date of birth</label><input id="f_dob" type="date" required><p class="emsg">We need your date of birth.</p></div>
-          <div class="fld"><label for="f_email">Email</label><input id="f_email" type="email" autocomplete="email" required><p class="emsg">Enter a valid email so the team can reply.</p></div>
+          <div class="fld"><label for="f_email">Email</label><input id="f_email" type="email" autocomplete="email" placeholder="you@example.com" required><p class="emsg">Enter a valid email so the team can reply.</p></div>
           <div class="fld"><label for="f_phone">Phone <span class="opt">(optional)</span></label><input id="f_phone" type="tel" autocomplete="tel"></div>
-          <div class="fld"><label for="f_town">Location</label><input id="f_town" type="text" placeholder="Town / region" required><p class="emsg">Where are you based?</p></div>
-          <div class="fld"><label for="f_nationality">Nationality <span class="opt">(optional)</span></label><input id="f_nationality" type="text"></div>
+          <div class="fld"><label for="f_town">Town / region</label><input id="f_town" type="text" placeholder="e.g. Bury, Greater Manchester" required><p class="emsg">Where are you based?</p></div>
+          <div class="fld"><label for="f_club">Current club or team <span class="opt">(optional)</span></label><input id="f_club" type="text"></div>
+          <div class="fld full"><label for="f_cover">Cover letter &middot; include your best results</label><textarea id="f_cover" maxlength="1500" placeholder="Why 360, why you, and the two or three results you're proudest of. A short paragraph and a few result lines is plenty." style="min-height:170px" required></textarea><p class="cnt" id="covercnt">0 / 1500</p><p class="emsg">A few honest lines and a result or two is all it takes.</p></div>
         </div>
-      </div>
-
-      <div class="fsec" id="guardian">
-        <h3>Parent / guardian</h3>
-        <p class="fnote">Required for riders under 18. The team will include a parent or guardian in what follows an application.</p>
-        <div class="frm">
-          <div class="fld"><label for="f_gname">Parent / guardian name</label><input id="f_gname" type="text"><p class="emsg">Needed for riders under 18.</p></div>
-          <div class="fld"><label for="f_gcontact">Parent / guardian contact</label><input id="f_gcontact" type="text" placeholder="Email or phone"><p class="emsg">Needed for riders under 18.</p></div>
-        </div>
-      </div>
-
-      <div class="fsec">
-        <h3>Cycling information</h3>
-        <div class="frm">
-          <div class="fld"><label for="f_club">Current team or club <span class="opt">(optional)</span></label><input id="f_club" type="text"></div>
-          <div class="fld"><label for="f_cat">Current racing category <span class="opt">(optional)</span></label><input id="f_cat" type="text" placeholder="e.g. 2nd cat, junior"></div>
-          <div class="fld"><label for="f_bcid">British Cycling / UCI ID <span class="opt">(optional)</span></label><input id="f_bcid" type="text"></div>
-          <div class="fld"><label for="f_discipline">Primary discipline <span class="opt">(optional)</span></label><input id="f_discipline" type="text" placeholder="Road, track, CX..."></div>
-          <div class="fld"><label for="f_years">Years racing <span class="opt">(optional)</span></label><input id="f_years" type="text" inputmode="numeric"></div>
-        </div>
-      </div>
-
-      <div class="fsec">
-        <h3>Performance &amp; racing</h3>
-        <div class="frm">
-          <div class="fld full"><label for="f_results">Key results</label><textarea id="f_results" maxlength="600" placeholder="Race, year, result. One per line." required></textarea><p class="emsg">Give at least one result or reference point.</p></div>
-          <div class="fld full"><label for="f_programme">Recent race programme <span class="opt">(optional)</span></label><textarea id="f_programme" maxlength="400" style="min-height:72px" placeholder="The races you have ridden recently."></textarea></div>
-          <div class="fld"><label for="f_strengths">Strengths as a rider <span class="opt">(optional)</span></label><input id="f_strengths" type="text" maxlength="160"></div>
-          <div class="fld"><label for="f_ridertype">Type of rider <span class="opt">(optional)</span></label><input id="f_ridertype" type="text" maxlength="120" placeholder="Climber, sprinter, rouleur..."></div>
-          <div class="fld full"><label for="f_power">Power information <span class="opt">(optional, if you wish to share it)</span></label><input id="f_power" type="text" maxlength="200" placeholder="e.g. best 5 min and 20 min power, weight"></div>
-        </div>
-      </div>
-
-      <div class="fsec">
-        <h3>2027</h3>
-        <div class="frm">
-          <div class="fld full"><label for="f_plans">Current plans for 2027 <span class="opt">(optional)</span></label><input id="f_plans" type="text" maxlength="200"></div>
-          <div class="fld full"><label for="f_ambitions">Racing ambitions <span class="opt">(optional)</span></label><input id="f_ambitions" type="text" maxlength="200"></div>
-          <div class="fld full"><label for="f_why">Why 360 Cycling</label><textarea id="f_why" maxlength="600" placeholder="A short, honest paragraph is plenty." required></textarea><p class="emsg">A few honest lines is all it takes.</p></div>
-          <div class="fld full"><label for="f_lookingfor">What you are looking for from a team <span class="opt">(optional)</span></label><input id="f_lookingfor" type="text" maxlength="200"></div>
-        </div>
-      </div>
-
-      <div class="fsec">
-        <h3>Documents &amp; links</h3>
-        <div class="frm">
-          <div class="cvzone" id="cvzone" role="button" tabindex="0" aria-label="Choose your rider CV file. PDF or Word, up to 10 megabytes.">
-            <p class="big">Add your rider CV: drop it here or tap to choose</p>
-            <p class="small">PDF or Word &middot; up to 10 MB</p>
-            <p class="cvfile" id="cvfile"></p>
-            <input type="file" id="f_cv" accept=".pdf,.doc,.docx" style="display:none">
+        <div id="guardian">
+          <div class="frm" style="margin-top:14px">
+            <div class="fld"><label for="f_gname">Parent / guardian name</label><input id="f_gname" type="text"><p class="emsg">Needed for riders under 18.</p></div>
+            <div class="fld"><label for="f_gcontact">Parent / guardian contact</label><input id="f_gcontact" type="text" placeholder="Email or phone"><p class="emsg">Needed for riders under 18.</p></div>
           </div>
-          <p class="cvnote">Your CV travels with the email, not through this page. When your mail app opens, attach the file before sending. There is a reminder.</p>
-          <div class="fld"><label for="f_strava">Strava <span class="opt">(optional)</span></label><input id="f_strava" type="url" placeholder="https://"></div>
-          <div class="fld"><label for="f_otherlinks">Other links <span class="opt">(optional)</span></label><input id="f_otherlinks" type="text"></div>
+          <p class="cvnote" style="margin-top:8px">Riders under 18: the team will include a parent or guardian in what follows an application.</p>
         </div>
       </div>
 
-      <div class="fsec">
-        <h3>Consent</h3>
+      <!-- STEP 3 -->
+      <div class="step">
+        <div class="sh"><span class="plate">03</span><h3>Your CV, then send</h3></div>
+        <div class="cvzone" id="cvzone" role="button" tabindex="0" aria-label="Choose your CV file. PDF or Word, up to 10 megabytes.">
+          <p class="big">Drop your CV here, or tap to choose it</p>
+          <p class="small">PDF or Word &middot; up to 10 MB &middot; results, numbers, whatever tells your story</p>
+          <p class="cvfile" id="cvfile"></p>
+          <input type="file" id="f_cv" accept=".pdf,.doc,.docx" style="display:none">
+        </div>
+        <p class="cvnote">Your CV travels with your email, not through this page. When your mail app opens, attach the file before you hit send. There is a reminder.</p>
+
         <label class="consent"><input type="checkbox" id="c_privacy"><span>I consent to 360 Cycling processing the information in this application for the purpose of team selection. This page stores nothing; the application is sent by email and can be deleted on request to josh@360cycling.co.uk.</span></label>
         <label class="consent"><input type="checkbox" id="c_accurate"><span>I confirm the information supplied is accurate.</span></label>
-      </div>
 
-      <div class="sendrow">
-        <a class="btn btn-red btn-send" id="sendbtn" href="#" role="button">Submit application</a>
-        <p class="privline">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
-          <span><b>Sent directly to the team.</b> Your application goes to josh@360cycling.co.uk by email. This page has no server, no tracking and no database.</span>
-        </p>
-      </div>
+        <div class="sendrow">
+          <a class="btn btn-red btn-send" id="sendbtn" href="#" role="button">Send my application</a>
+          <p class="privline">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+            <span><b>Straight to Josh.</b> Your application goes directly to <b>josh@360cycling.co.uk</b> by email. This page has no server, no tracking and no database.</span>
+          </p>
+        </div>
 
-      <div class="afterpane" id="afterpane" role="status" aria-live="polite">
-        <h4>Application ready to send</h4>
-        <p>Your email app is opening with the application addressed to <b>josh@360cycling.co.uk</b>. <b>Attach <span class="fn" id="aftercv">your CV</span></b>, then press send to complete it.</p>
-        <p style="margin-top:8px">Thank you for applying to 360 Cycling for the 2027 season. Applications will be reviewed by the team and selected riders will be contacted directly.</p>
-        <p style="margin-top:8px">If your mail app did not open, copy the application below and send it from any email account to <b>josh@360cycling.co.uk</b>.</p>
-        <textarea id="plainapp" readonly aria-label="Your application as plain text"></textarea>
-        <div class="tools">
-          <button type="button" class="minib" id="copyapp">Copy application</button>
-          <button type="button" class="minib" id="copyaddr">Copy email address</button>
-          <span id="copied" style="display:none;color:#7DE8B5;font-family:var(--mono);font-size:11px">Copied</span>
+        <div class="afterpane" id="afterpane" role="status" aria-live="polite">
+          <h4>Application ready to send</h4>
+          <p>Your email app is opening with the application addressed to <b>josh@360cycling.co.uk</b>. <b>Attach <span class="fn" id="aftercv">your CV</span></b>, then press send to complete it.</p>
+          <p style="margin-top:8px">Thank you for applying to 360 Cycling for the 2027 season. Applications will be reviewed by the team and selected riders will be contacted directly.</p>
+          <p style="margin-top:8px">If your mail app did not open, copy the application below and send it from any email account to <b>josh@360cycling.co.uk</b>.</p>
+          <textarea id="plainapp" readonly aria-label="Your application as plain text"></textarea>
+          <div class="tools">
+            <button type="button" class="minib" id="copyapp">Copy application</button>
+            <button type="button" class="minib" id="copyaddr">Copy email address</button>
+            <span id="copied" style="display:none;color:#7DE8B5;font-family:var(--mono);font-size:11px">Copied</span>
+          </div>
         </div>
       </div>
     </form>
   </div>
 </section>
 
-<!-- calendar, mentioned only here -->
+<!-- calendar + women's contact, only here at the bottom -->
 <div class="wrap" style="padding:10px 24px 56px">
   <div class="calask">
     <div>
@@ -415,6 +313,7 @@
       <a class="btn btn-red" href="#apply">Apply</a>
     </div>
   </div>
+  <p class="wnote" style="margin-top:18px">This page covers the men's Junior and Under-23 squads. Female riders should contact <a href="mailto:kate@360cycling.co.uk">kate@360cycling.co.uk</a> for women's team information.</p>
 </div>
 
 <button id="totop" type="button" aria-label="Back to top">
