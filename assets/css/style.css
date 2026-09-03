@@ -74,6 +74,9 @@ section{padding:64px 0;position:relative}
 /* ---------- team switch ---------- */
 .teamband{display:flex;flex-direction:column;align-items:center;gap:11px;text-align:center;padding:34px 24px 0}
 .teamband .lbl{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--steel)}
+.wnote{font-size:13.5px;color:var(--steel);max-width:60ch}
+.wnote a{color:var(--chalk);text-decoration:none;border-bottom:1px solid var(--edge2);white-space:nowrap}
+.wnote a:hover{border-color:var(--chalk)}
 .switch{display:inline-flex;border:1px solid var(--edge2);border-radius:999px;background:var(--panel);padding:4px}
 .swbtn{appearance:none;border:0;background:transparent;color:var(--steel);font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:12px 26px;border-radius:999px;cursor:pointer;transition:color .18s,background .18s}
 .swbtn:hover{color:var(--chalk)}

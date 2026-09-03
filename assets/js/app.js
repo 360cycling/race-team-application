@@ -282,6 +282,55 @@
     window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
   });
 
+  /* ---------- owner edit mode (open the page with ?edit) ----------
+     Lets the team retype any wording directly on the page, then download
+     the updated index.html to upload back to the GitHub repository.
+     Purely client-side: visitors' edits never persist or affect anyone. */
+  function enableEditMode(){
+    var bar = document.createElement("div");
+    bar.id = "editbar";
+    bar.setAttribute("contenteditable", "false");
+    bar.style.cssText = "position:fixed;left:0;right:0;bottom:0;z-index:99;background:#E11414;color:#fff;padding:12px 18px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:12px";
+    bar.innerHTML = '<b style="letter-spacing:.08em;text-transform:uppercase">Editing mode</b>' +
+      '<span>Click any text and retype it. Nothing is public until you upload the downloaded file to GitHub (repo &rarr; index.html &rarr; replace).</span>' +
+      '<span style="margin-left:auto;display:flex;gap:8px">' +
+      '<button id="ed_dl" style="background:#fff;color:#0B0D12;border:0;border-radius:3px;padding:8px 14px;font-family:inherit;font-weight:600;cursor:pointer">Download HTML</button>' +
+      '<button id="ed_copy" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.5);border-radius:3px;padding:8px 14px;font-family:inherit;cursor:pointer">Copy HTML</button>' +
+      '<button id="ed_exit" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,.5);border-radius:3px;padding:8px 14px;font-family:inherit;cursor:pointer">Exit</button></span>';
+    document.body.appendChild(bar);
+    document.body.contentEditable = "true";
+    document.body.style.paddingBottom = "70px";
+    function serialize(){
+      var clone = document.documentElement.cloneNode(true);
+      var b = clone.querySelector("#editbar"); if (b) b.parentNode.removeChild(b);
+      var bodyEl = clone.querySelector("body");
+      bodyEl.removeAttribute("contenteditable");
+      bodyEl.style.paddingBottom = "";
+      if (!bodyEl.getAttribute("style")) bodyEl.removeAttribute("style");
+      [].slice.call(clone.querySelectorAll("[contenteditable]")).forEach(function(el){ el.removeAttribute("contenteditable"); });
+      var open = clone.querySelector("#navlinks.open"); if (open) open.classList.remove("open");
+      var ap = clone.querySelector("#afterpane.on"); if (ap) ap.classList.remove("on");
+      return "<!doctype html>\n" + clone.outerHTML;
+    }
+    document.getElementById("ed_dl").addEventListener("click", function(){
+      var blob = new Blob([serialize()], { type: "text/html" });
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "index.html";
+      document.body.appendChild(a); a.click(); a.remove();
+    });
+    document.getElementById("ed_copy").addEventListener("click", function(){
+      var t = serialize();
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t);
+      var btn = document.getElementById("ed_copy");
+      btn.textContent = "Copied"; setTimeout(function(){ btn.textContent = "Copy HTML"; }, 1600);
+    });
+    document.getElementById("ed_exit").addEventListener("click", function(){
+      try { location.href = location.pathname; } catch(e){}
+    });
+  }
+  if (/[?&]edit/.test(location.search)) enableEditMode();
+
   /* ---------- initial view ---------- */
   var initView = "junior";
   var h0 = (location.hash || "").replace("#", "");
