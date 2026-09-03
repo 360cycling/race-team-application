@@ -113,7 +113,7 @@
   function setCv(file){
     if (!file) return;
     if (!OK_EXT.test(file.name)) { cvMsg("That does not look like a PDF or Word file. Save your CV as .pdf, .doc or .docx and try again.", false); return; }
-    if (file.size > 10 * 1024 * 1024) { cvMsg("That file is over 10 MB. Export a smaller PDF and try again.", false); return; }
+    if (file.size > 5 * 1024 * 1024) { cvMsg("That file is over 5 MB. Export a smaller PDF and try again.", false); return; }
     cvName = file.name;
     cvzone.classList.add("has");
     cvfileEl.classList.add("on");
@@ -133,7 +133,13 @@
   ["dragleave","drop"].forEach(function(t){ cvzone.addEventListener(t, function(ev){ ev.preventDefault(); cvzone.classList.remove("drag"); }); });
   cvzone.addEventListener("drop", function(ev){
     var files = ev.dataTransfer && ev.dataTransfer.files;
-    if (files && files.length) setCv(files[0]);
+    if (files && files.length) {
+      // put the dropped file into the actual input so it is submitted with the form
+      try { cvinput.files = files; } catch(e){
+        try { var dt = new DataTransfer(); dt.items.add(files[0]); cvinput.files = dt.files; } catch(e2){}
+      }
+      setCv(files[0]);
+    }
   });
 
   /* ---------- validation ---------- */
@@ -180,68 +186,44 @@
     $(id).addEventListener("change", function(){ $(id).closest(".consent").classList.remove("err"); });
   });
 
-  /* ---------- compose the application ---------- */
-  function line(k, v){ return (v && v.trim()) ? (k + ": " + v.trim()) : null; }
-  function buildPlain(){
+  /* ---------- submit: native POST to the form service, with the CV attached ---------- */
+  var form = $("appform");
+  var sendbtn = $("sendbtn");
+  form.addEventListener("submit", function(ev){
+    if (!validate()) { ev.preventDefault(); return; }
     var ra = racingAge();
-    var rows = [
-      "360 CYCLING - 2027 " + (team() === "junior" ? "JUNIOR (360 JRT)" : "UNDER-23") + " APPLICATION",
-      "--------------------------------------------",
-      line("Name", f.name.value),
-      line("Date of birth", f.dob.value) + (ra !== null ? "  (racing age " + ra + " in 2027)" : ""),
-      line("Town / region", f.town.value),
-      line("Email", f.email.value),
-      line("Phone", f.phone.value),
-      line("Current club / team", f.club.value),
-      guardian.classList.contains("on") ? line("Parent / guardian", f.gname.value) : null,
-      guardian.classList.contains("on") ? line("Parent / guardian contact", f.gcontact.value) : null,
-      "",
-      "COVER LETTER",
-      f.cover.value.trim(),
-      "",
-      "--------------------------------------------",
-      "CV: " + (cvName ? "attached - " + cvName : "to be attached to this email"),
-      "Consent: information accurate; data processing for team selection agreed.",
-      "Sent via the 360 application page."
-    ].filter(function(r){ return r !== null; });
-    return rows.join("\n");
-  }
-
-  var sendbtn = $("sendbtn"), afterpane = $("afterpane"), aftercv = $("aftercv"), plainapp = $("plainapp");
-  function mailtoUrl(to, cc, subject, body){
-    return "mailto:" + to + "?cc=" + cc +
-      "&subject=" + encodeURIComponent(subject) +
-      "&body=" + encodeURIComponent(body);
-  }
-  sendbtn.addEventListener("click", function(ev){
-    ev.preventDefault();
-    if (!validate()) return;
-    var subject = "2027 " + (team() === "junior" ? "Junior (JRT)" : "U23") + " application - " + f.name.value.trim();
-    var body = buildPlain();
-    aftercv.textContent = cvName ? cvName : "your CV";
-    plainapp.value = "To: " + JOSH_EMAIL + "\nCc: " + TEAM_EMAIL + "\nSubject: " + subject + "\n\n" + body;
-    afterpane.classList.add("on");
+    // a readable subject line, and a racing-age line so it's in the email
+    var subj = $("f_subject");
+    if (subj) subj.value = "2027 " + (team() === "junior" ? "Junior (JRT)" : "U23") + " application - " + f.name.value.trim();
+    if (ra !== null && !$("f_ragefield")) {
+      var h = document.createElement("input");
+      h.type = "hidden"; h.id = "f_ragefield"; h.name = "Racing age in 2027"; h.value = String(ra);
+      form.appendChild(h);
+    }
+    if (!$("f_teamfield")) {
+      var t = document.createElement("input");
+      t.type = "hidden"; t.id = "f_teamfield"; t.name = "Applying for"; t.value = (team() === "junior" ? "Junior (360 JRT)" : "Under-23");
+      form.appendChild(t);
+    } else { $("f_teamfield").value = (team() === "junior" ? "Junior (360 JRT)" : "Under-23"); }
+    // hand off; the browser POSTs to FormSubmit which emails the team and redirects back
+    sendbtn.disabled = true;
+    sendbtn.textContent = "Sending…";
     try { sessionStorage.removeItem("r360draft"); } catch(e){}
-    setTimeout(function(){ afterpane.scrollIntoView({ behavior: "smooth", block: "nearest" }); }, 120);
-    setTimeout(function(){ try { window.location.href = mailtoUrl(JOSH_EMAIL, TEAM_EMAIL, subject, body); } catch(e){} }, 40);
+    // let the native submit proceed
   });
 
-  function flashCopied(){
-    var c = $("copied");
-    c.style.display = "inline";
-    setTimeout(function(){ c.style.display = "none"; }, 1800);
-  }
-  function copyText(t){
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(t).then(flashCopied, function(){ fallbackCopy(); });
-    } else fallbackCopy();
-  }
-  function fallbackCopy(){
-    plainapp.focus(); plainapp.select();
-    try { document.execCommand("copy"); flashCopied(); } catch(e){}
-  }
-  $("copyapp").addEventListener("click", function(){ copyText(plainapp.value); });
-  $("copyaddr").addEventListener("click", function(){ copyText(JOSH_EMAIL); });
+  /* show the confirmation after FormSubmit redirects back with ?sent=1 */
+  (function(){
+    if (/[?&]sent=1/.test(location.search)) {
+      var pane = $("sentpane");
+      if (pane) {
+        pane.classList.add("on");
+        setTimeout(function(){ pane.scrollIntoView({ behavior: "smooth", block: "center" }); }, 200);
+      }
+      // tidy the URL so a refresh does not re-show it
+      try { history.replaceState(null, "", location.pathname + "#apply"); } catch(e){}
+    }
+  })();
 
   /* ---------- back to top ---------- */
   var totop = $("totop");
@@ -293,7 +275,7 @@
       var g = clone.querySelector("#guardian.on"); if (g) g.classList.remove("on");
       var cz = clone.querySelector("#cvzone"); if (cz) cz.classList.remove("has");
       var cf = clone.querySelector("#cvfile"); if (cf) { cf.textContent = ""; cf.classList.remove("on"); }
-      var ap = clone.querySelector("#afterpane.on"); if (ap) ap.classList.remove("on");
+      var ap = clone.querySelector("#sentpane.on"); if (ap) ap.classList.remove("on");
       return "<!doctype html>\n" + clone.outerHTML;
     }
     $("ed_dl").addEventListener("click", function(){

@@ -219,7 +219,7 @@
   <div class="applywrap">
     <p class="eyebrow">Applications &middot; 2027 season</p>
     <h2 class="sec">Two minutes.<br>One decision.</h2>
-    <p class="lede">Pick a squad, tell us who you are, and send it with your CV. It goes <b>straight to Josh's inbox</b> and every application gets read. <b>Nothing you enter is sent to or stored on any server.</b></p>
+    <p class="lede">Pick a squad, tell us who you are, and attach your CV. Submit, and it goes <b>straight to the team's inbox</b> with your CV attached. Every application gets read.</p>
 
     <div class="panelblock">
       <p class="pbl">Every application is reviewed by the team's staff</p>
@@ -233,7 +233,14 @@
       </div>
     </div>
 
-    <form id="appform" novalidate>
+    <form id="appform" action="https://formsubmit.co/josh@360cycling.co.uk" method="POST" enctype="multipart/form-data" novalidate>
+      <!-- FormSubmit configuration (the applicant never sees these) -->
+      <input type="hidden" name="_subject" id="f_subject" value="2027 360 team application">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="https://360cycling.github.io/race-team-application/?sent=1">
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+
       <!-- STEP 1 -->
       <div class="step">
         <div class="sh"><span class="plate">01</span><h3>Pick your team</h3></div>
@@ -257,18 +264,18 @@
       <div class="step">
         <div class="sh"><span class="plate">02</span><h3>Who you are</h3></div>
         <div class="frm">
-          <div class="fld"><label for="f_name">Full name</label><input id="f_name" type="text" autocomplete="name" required><p class="emsg">We need your name.</p></div>
-          <div class="fld"><label for="f_dob">Date of birth</label><input id="f_dob" type="date" required><p class="emsg">We need your date of birth.</p></div>
-          <div class="fld"><label for="f_email">Email</label><input id="f_email" type="email" autocomplete="email" placeholder="you@example.com" required><p class="emsg">Enter a valid email so the team can reply.</p></div>
-          <div class="fld"><label for="f_phone">Phone <span class="opt">(optional)</span></label><input id="f_phone" type="tel" autocomplete="tel"></div>
-          <div class="fld"><label for="f_town">Town / region</label><input id="f_town" type="text" placeholder="e.g. Bury, Greater Manchester" required><p class="emsg">Where are you based?</p></div>
-          <div class="fld"><label for="f_club">Current club or team <span class="opt">(optional)</span></label><input id="f_club" type="text"></div>
-          <div class="fld full"><label for="f_cover">Cover letter &middot; include your best results</label><textarea id="f_cover" maxlength="1500" placeholder="Why 360, why you, and the two or three results you're proudest of. A short paragraph and a few result lines is plenty." style="min-height:170px" required></textarea><p class="cnt" id="covercnt">0 / 1500</p><p class="emsg">A few honest lines and a result or two is all it takes.</p></div>
+          <div class="fld"><label for="f_name">Full name</label><input id="f_name" name="Name" type="text" autocomplete="name" required><p class="emsg">We need your name.</p></div>
+          <div class="fld"><label for="f_dob">Date of birth</label><input id="f_dob" name="Date of birth" type="date" required><p class="emsg">We need your date of birth.</p></div>
+          <div class="fld"><label for="f_email">Email</label><input id="f_email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required><p class="emsg">Enter a valid email so the team can reply.</p></div>
+          <div class="fld"><label for="f_phone">Phone <span class="opt">(optional)</span></label><input id="f_phone" name="Phone" type="tel" autocomplete="tel"></div>
+          <div class="fld"><label for="f_town">Town / region</label><input id="f_town" name="Location" type="text" placeholder="e.g. Bury, Greater Manchester" required><p class="emsg">Where are you based?</p></div>
+          <div class="fld"><label for="f_club">Current club or team <span class="opt">(optional)</span></label><input id="f_club" name="Current club or team" type="text"></div>
+          <div class="fld full"><label for="f_cover">Cover letter &middot; include your best results</label><textarea id="f_cover" name="Cover letter" maxlength="1500" placeholder="Why 360, why you, and the two or three results you're proudest of. A short paragraph and a few result lines is plenty." style="min-height:170px" required></textarea><p class="cnt" id="covercnt">0 / 1500</p><p class="emsg">A few honest lines and a result or two is all it takes.</p></div>
         </div>
         <div id="guardian">
           <div class="frm" style="margin-top:14px">
-            <div class="fld"><label for="f_gname">Parent / guardian name</label><input id="f_gname" type="text"><p class="emsg">Needed for riders under 18.</p></div>
-            <div class="fld"><label for="f_gcontact">Parent / guardian contact</label><input id="f_gcontact" type="text" placeholder="Email or phone"><p class="emsg">Needed for riders under 18.</p></div>
+            <div class="fld"><label for="f_gname">Parent / guardian name</label><input id="f_gname" name="Parent or guardian name" type="text"><p class="emsg">Needed for riders under 18.</p></div>
+            <div class="fld"><label for="f_gcontact">Parent / guardian contact</label><input id="f_gcontact" name="Parent or guardian contact" type="text" placeholder="Email or phone"><p class="emsg">Needed for riders under 18.</p></div>
           </div>
           <p class="cvnote" style="margin-top:8px">Riders under 18: the team will include a parent or guardian in what follows an application.</p>
         </div>
@@ -277,39 +284,32 @@
       <!-- STEP 3 -->
       <div class="step">
         <div class="sh"><span class="plate">03</span><h3>Your CV, then send</h3></div>
-        <div class="cvzone" id="cvzone" role="button" tabindex="0" aria-label="Choose your CV file. PDF or Word, up to 10 megabytes.">
-          <p class="big">Drop your CV here, or tap to choose it</p>
-          <p class="small">PDF or Word &middot; up to 10 MB &middot; results, numbers, whatever tells your story</p>
+        <div class="cvzone" id="cvzone" role="button" tabindex="0" aria-label="Choose your CV file. PDF or Word, up to 5 megabytes.">
+          <p class="big">Add your CV: drop it here, or tap to choose it</p>
+          <p class="small">PDF or Word &middot; up to 5 MB &middot; results, numbers, whatever tells your story</p>
           <p class="cvfile" id="cvfile"></p>
-          <input type="file" id="f_cv" accept=".pdf,.doc,.docx" style="display:none">
+          <input type="file" id="f_cv" name="cv" accept=".pdf,.doc,.docx" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none">
         </div>
-        <p class="cvnote">Your CV travels with your email, not through this page. When your mail app opens, attach the file before you hit send. There is a reminder.</p>
+        <p class="cvnote">Your CV is attached to your application and sent with it. Add it here before you submit.</p>
 
-        <label class="consent"><input type="checkbox" id="c_privacy"><span>I consent to 360 Cycling processing the information in this application for the purpose of team selection. Nothing is sent to a server; the application is sent by email and can be deleted on request to josh@360cycling.co.uk.</span></label>
-        <label class="consent"><input type="checkbox" id="c_accurate"><span>I confirm the information supplied is accurate.</span></label>
+        <label class="consent"><input type="checkbox" id="c_privacy" name="Consent - data processing" value="Yes"><span>I consent to 360 Cycling processing the information in this application for the purpose of team selection. It is sent to the team by email via the form service FormSubmit, and can be deleted on request to josh@360cycling.co.uk.</span></label>
+        <label class="consent"><input type="checkbox" id="c_accurate" name="Consent - accurate" value="Yes"><span>I confirm the information supplied is accurate.</span></label>
 
         <div class="sendrow">
-          <a class="btn btn-red btn-send" id="sendbtn" href="#" role="button">Send my application</a>
+          <button type="submit" class="btn btn-red btn-send" id="sendbtn">Send my application</button>
           <p class="privline">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
-            <span><b>Straight to Josh.</b> Your application goes directly to <b>josh@360cycling.co.uk</b> by email. This page has no server, no tracking and no database.</span>
+            <span><b>Sent straight to the team.</b> Your application and CV go directly to <b>josh@360cycling.co.uk</b>. It is delivered by email through the form service FormSubmit and is not stored on this page.</span>
           </p>
-        </div>
-
-        <div class="afterpane" id="afterpane" role="status" aria-live="polite">
-          <h4>Application ready to send</h4>
-          <p>Your email app is opening with the application addressed to <b>josh@360cycling.co.uk</b>. <b>Attach <span class="fn" id="aftercv">your CV</span></b>, then press send to complete it.</p>
-          <p style="margin-top:8px">Thank you for applying to 360 Cycling for the 2027 season. Applications will be reviewed by the team and selected riders will be contacted directly.</p>
-          <p style="margin-top:8px">If your mail app did not open, copy the application below and send it from any email account to <b>josh@360cycling.co.uk</b>.</p>
-          <textarea id="plainapp" readonly aria-label="Your application as plain text"></textarea>
-          <div class="tools">
-            <button type="button" class="minib" id="copyapp">Copy application</button>
-            <button type="button" class="minib" id="copyaddr">Copy email address</button>
-            <span id="copied" style="display:none;color:#7DE8B5;font-family:var(--mono);font-size:11px">Copied</span>
-          </div>
         </div>
       </div>
     </form>
+
+    <div class="afterpane" id="sentpane" role="status" aria-live="polite">
+      <h4>Application received</h4>
+      <p>Thank you for applying to 360 Cycling for the 2027 season. Your application and CV have been sent to the team.</p>
+      <p style="margin-top:8px">Applications will be reviewed by the team and selected riders will be contacted directly.</p>
+    </div>
   </div>
 </section>
 
@@ -345,7 +345,7 @@
     <div class="legal">
       <span>&copy; 2026 360 Cycling</span>
       <span>Applications 2027 &middot; Junior &amp; U23</span>
-      <span>No cookies &middot; no tracking &middot; no server</span>
+      <span>No cookies &middot; no tracking &middot; no ads</span>
     </div>
   </div>
 </footer>
