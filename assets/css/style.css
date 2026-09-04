@@ -9,8 +9,8 @@
   --mono:'IBM Plex Mono','Cascadia Mono',Consolas,monospace;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--track);color:var(--chalk);font-family:var(--body);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--track);color:var(--chalk);font-family:var(--body);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative;width:100%;max-width:100%}
 img{max-width:100%;display:block}
 a{color:inherit}
 ::selection{background:var(--red);color:#fff}
@@ -111,8 +111,8 @@ body[data-view="u23"] .only-junior{display:none!important}
 
 /* race-brief scroll-throughs */
 .bfh{font-family:var(--body);font-weight:600;font-size:19px;letter-spacing:0;margin:8px 0 8px}
-.bfgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:22px}
-.bf{margin:0}
+.bfgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:22px;max-width:100%}
+.bf{margin:0;min-width:0}
 .bfwin{height:540px;overflow:hidden;border:1px solid var(--edge);border-radius:5px;background:#0E1118;position:relative}
 .bftitle{position:absolute;top:0;left:0;right:0;z-index:2;background:rgba(11,13,18,.92);color:#fff;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.11em;text-transform:uppercase;padding:9px 12px;border-bottom:1px solid rgba(255,255,255,.09);display:flex;align-items:center;gap:8px}
 .bftitle::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--red);flex:none}
